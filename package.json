@@ -1,0 +1,41 @@
+{
+  "name": "ip-lookup",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "aws-sdk": "^2.153.0",
+    "aws-sdk-mock": "^1.7.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jest": "^21.2.0",
+    "jest": "^21.2.1",
+    "nock": "^9.1.0",
+    "serverless": "^1.23.0",
+    "serverless-webpack": "^3.1.2",
+    "webpack": "^3.8.1"
+  },
+  "scripts": {
+    "deploy": "sls deploy -v",
+    "test": "npm run lint && jest",
+    "lint": "eslint src",
+    "sonar": "sonar-scanner -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN"
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
+  },
+  "keywords": [
+    "ip lookup",
+    "lambda",
+    "serverless"
+  ],
+  "author": {
+    "name": "Michele Giardi"
+  },
+  "license": "MIT"
+}

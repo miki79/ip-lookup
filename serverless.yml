@@ -1,0 +1,44 @@
+service: ip-lookup
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  region: eu-west-1
+  memorySize: 1024
+  environment:
+    S3_BUCKET:
+        Ref: ServerlessDeploymentBucket         
+    
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action: 
+        - 's3:PutObject'
+        - 's3:GetObject'
+      Resource:
+        Fn::Join:
+          - ''
+          - - 'arn:aws:s3:::'
+            - Ref: ServerlessDeploymentBucket
+            - '/*'
+
+plugins:
+  - serverless-webpack  
+
+functions:
+  download:
+    handler: src/handler.download
+    description: Downloads files from Apnic and saves in S3
+    timeout: 60
+    events:
+      - schedule:
+          rate: rate(12 hours)
+          enabled: false      
+  lookup:
+    handler: src/handler.ipLookup
+    description: IP lookup to get Provider information and country
+    timeout: 30    
+    events:
+      - http:
+          cors: true
+          path: ip
+          method: get
