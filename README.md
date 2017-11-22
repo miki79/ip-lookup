@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/Miki79/ip-lookup.svg?branch=master)](https://travis-ci.org/Miki79/ip-lookup)
+[![CircleCI](https://circleci.com/gh/Miki79/ip-lookup.svg?style=svg)](https://circleci.com/gh/Miki79/ip-lookup)
 [![Coverage Status](https://coveralls.io/repos/github/Miki79/ip-lookup/badge.svg?branch=master)](https://coveralls.io/github/Miki79/ip-lookup?branch=master)
+[![Sonar Status](https://sonarcloud.io/api/badges/gate?key=net.giardi.lambda.ip-lookup)](https://sonarcloud.io/api/badges/gate?key=net.giardi.lambda.ip-lookup)
 
 # IP ASN lookup
 This code generates an HTTP endpoint in AWS to translate an IP to ASN.
