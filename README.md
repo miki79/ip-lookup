@@ -1,3 +1,6 @@
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+
 # IP ASN lookup
 This code generates an HTTP endpoint in AWS to translate an IP to ASN.
 The information is from apnic.net
