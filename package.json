@@ -22,7 +22,8 @@
   },
   "scripts": {
     "deploy": "sls deploy -v",
-    "test": "npm run lint && jest && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "npm run lint && jest",
+    "test-ci": "npm run test && npm run sonar && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "lint": "eslint src",
     "sonar": "sonar-scanner -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN"
   },
