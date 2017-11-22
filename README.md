@@ -1,5 +1,5 @@
-[![build status][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
+[![Build Status](https://travis-ci.org/Miki79/ip-lookup.svg?branch=master)](https://travis-ci.org/Miki79/ip-lookup)
+[![Coverage Status](https://coveralls.io/repos/github/Miki79/ip-lookup/badge.svg?branch=master)](https://coveralls.io/github/Miki79/ip-lookup?branch=master)
 
 # IP ASN lookup
 This code generates an HTTP endpoint in AWS to translate an IP to ASN.
