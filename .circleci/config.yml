@@ -51,10 +51,5 @@ workflows:
       - test:
           requires:
             - build
-      - upload_report:
-          requires:
-            - test
-          filter:
-            branches:
-              only: master
+
       
