@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:      
-      - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+      - image: node:8
     steps:
       - checkout
       - run:
@@ -22,12 +22,17 @@ jobs:
             - node_modules
   test:
     docker:
-      - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+      - image: node:8
     step:
       - checkout
       - run:
           name: Test
           command: npm test
+  report:
+    docker:
+      - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+    step:
+      - checkout
       - run:
           name: Submit Coverage
           command: npm run coverage
@@ -46,6 +51,9 @@ workflows:
         - test:
             requires:
               - build
+        - report:
+            requires:
+              - test
             filter:
               branches:
                 only: master
