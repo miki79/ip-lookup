@@ -23,15 +23,15 @@ jobs:
   test:
     docker:
       - image: node:8
-    step:
+    steps:
       - checkout
       - run:
           name: Test
           command: npm test
-  report:
+  upload:
     docker:
       - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
-    step:
+    steps:
       - checkout
       - run:
           name: Submit Coverage
@@ -51,4 +51,10 @@ workflows:
       - test:
           requires:
             - build
+      - upload:
+          requires:
+            - test
+          filter:
+            branches:
+              only: master
       
