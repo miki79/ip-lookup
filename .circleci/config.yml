@@ -51,9 +51,4 @@ workflows:
       - test:
           requires:
             - build
-      - report:
-          requires:
-            - test
-          filter:
-            branches:
-              only: master
+      
