@@ -3,6 +3,7 @@ jobs:
   build:
     docker:      
       - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+    working_directory: ~/circleci-workflows
     steps:
       - checkout
       #- run:
@@ -23,6 +24,7 @@ jobs:
   test:
     docker:
       - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+    working_directory: ~/circleci-workflows
     steps:
       - checkout
       - run:
@@ -51,10 +53,10 @@ workflows:
       - test:
           requires:
             - build
-#      - upload_report:
-#          requires:
-#            - test
-#          filter:
-#            branches:
-#              only: master
+      - upload_report:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
       
