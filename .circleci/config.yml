@@ -4,15 +4,11 @@ defaults: &defaults
   docker:
     - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
 
-
 jobs:
   build:
     <<: *defaults
     steps:
-      - checkout
-      #- run:
-      #    name: Update npm
-      #    command: 'npm install -g npm@latest'      
+      - checkout      
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
