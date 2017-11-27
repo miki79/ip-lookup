@@ -1,6 +1,6 @@
 version: 2
 
-defaults:
+defaults: &defaults
   working_directory: ~/app
   docker:
     - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
