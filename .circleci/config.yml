@@ -39,6 +39,14 @@ jobs:
       - run:
           name: Test
           command: npm test
+      - store_artifacts:
+          path: coverage
+          prefix: coverage
+      - persist_to_workspace:
+          root: /root/app
+          paths:
+            - node_modules
+            - coverage
   upload_report:
     <<: *defaults
     steps:      
@@ -51,9 +59,7 @@ jobs:
       - run:
           name: Submit sonar
           command: npm run sonar
-      - store_artifacts:
-          path: coverage
-          prefix: coverage
+
 
 workflows:
   version: 2
