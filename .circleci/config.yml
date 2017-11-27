@@ -2,12 +2,12 @@ version: 2
 jobs:
   build:
     docker:      
-      - image: node:8
+      - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
     steps:
       - checkout
       - run:
           name: Update npm
-          command: 'sudo npm install -g npm@latest'      
+          command: 'npm install -g npm@latest'      
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "package.json" }}
@@ -22,7 +22,7 @@ jobs:
             - node_modules
   test:
     docker:
-      - image: node:8
+      - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
     steps:
       - checkout
       - run:
@@ -51,5 +51,10 @@ workflows:
       - test:
           requires:
             - build
-
+#      - upload_report:
+#          requires:
+#            - test
+#          filter:
+#            branches:
+#              only: master
       
