@@ -32,19 +32,19 @@ jobs:
             - node_modules
   test:
     <<: *defaults    
-    steps:
+    steps:      
+      - checkout
       - attach_workspace:
           at: /root/app
-      - checkout
       - run:
           name: Test
           command: npm test
   upload_report:
     <<: *defaults
-    steps:
+    steps:      
+      - checkout
       - attach_workspace:
           at: /root/app
-      - checkout
       - run:
           name: Submit Coverage
           command: npm run coverage
