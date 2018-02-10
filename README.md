@@ -3,6 +3,8 @@
 [![Sonar Status](https://sonarcloud.io/api/badges/gate?key=net.giardi.lambda.ip-lookup)](https://sonarcloud.io/dashboard?id=net.giardi.lambda.ip-lookup)
 
 # IP ASN lookup
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/miki79/ip-lookup.svg)](https://greenkeeper.io/)
 This code generates an HTTP endpoint in AWS to translate an IP to ASN.
 The information is from apnic.net
 
