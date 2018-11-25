@@ -1,5 +1,5 @@
-import AWS from 'aws-sdk';
-import httpClient from './httpClient';
+const AWS = require('aws-sdk');
+const httpClient = require('./httpClient');
 
 const ASN_FILE = 'autnum.json';
 const IP_RANGE_FILE = 'ip-range.json';
@@ -102,8 +102,11 @@ const getIpRange = async () => {
   return dataIpRange;
 };
 
-export const downloadData = () => Promise.all([saveIpRange(), saveAsn()]).catch((e) => { throw e; });
+const downloadData = () =>
+  Promise.all([saveIpRange(), saveAsn()]).catch((e) => {
+    throw e;
+  });
 
-export const getData = () => Promise.all([getAsn(), getIpRange()]).then(data => ({ asn: data[0], ipRange: data[1] }));
+const getData = () => Promise.all([getAsn(), getIpRange()]).then(data => ({ asn: data[0], ipRange: data[1] }));
 
-export default { downloadData, getData };
+module.exports = { downloadData, getData };

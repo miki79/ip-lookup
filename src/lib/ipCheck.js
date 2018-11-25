@@ -1,4 +1,4 @@
-import { getData } from './dataApnic';
+const { getData } = require('./dataApnic');
 
 const ip2long = (ip) => {
   let longValue = 0;
@@ -12,7 +12,7 @@ const ip2long = (ip) => {
 const cidrToRange = (start, mask) => {
   const range = [2];
   range[0] = start;
-  range[1] = (2 ** (32 - mask)) + (start - 1);
+  range[1] = 2 ** (32 - mask) + (start - 1);
   return range;
 };
 
@@ -31,7 +31,6 @@ const getRange = (ip2, ipValue, listIp) => {
   return asn;
 };
 
-
 const checkIp = async (ip) => {
   const data = await getData();
   const ipValue = parseInt(ip2long(ip), 10);
@@ -42,7 +41,7 @@ const checkIp = async (ip) => {
   };
 
   for (let i = 0; i < 32; i += 1) {
-    const ip2 = (((ipValue >> i) << i) >>> 0);
+    const ip2 = ((ipValue >> i) << i) >>> 0;
     if (Object.prototype.hasOwnProperty.call(data.ipRange, ip2)) {
       response.asn = getRange(ip2, ipValue, data.ipRange);
       if (response.asn !== 0) {
@@ -61,4 +60,4 @@ const checkIp = async (ip) => {
   return response;
 };
 
-export default checkIp;
+module.exports = { checkIp };

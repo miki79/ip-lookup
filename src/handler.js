@@ -1,5 +1,5 @@
-import { downloadData } from './lib/dataApnic';
-import checkIp from './lib/ipCheck';
+const { downloadData } = require('./lib/dataApnic');
+const { checkIp } = require('./lib/ipCheck');
 
 const generateHttpResponse = (statusCode, body) => ({
   statusCode,
@@ -12,7 +12,7 @@ const generateHttpResponse = (statusCode, body) => ({
   body: JSON.stringify(body),
 });
 
-export const ipLookup = async (event, context, callback) => {
+module.exports.ipLookup = async (event, context, callback) => {
   try {
     console.info('Request from %s', event.requestContext.identity.sourceIp);
     const response = generateHttpResponse(200, await checkIp(event.requestContext.identity.sourceIp));
@@ -24,8 +24,13 @@ export const ipLookup = async (event, context, callback) => {
   }
 };
 
-export const download = (event, context, callback) => {
-  downloadData().then(() => { callback(null, 'OK'); }).catch((e) => { console.error(e); callback(e.toString()); });
+module.exports.download = (event, context, callback) => {
+  downloadData()
+    .then(() => {
+      callback(null, 'OK');
+    })
+    .catch((e) => {
+      console.error(e);
+      callback(e.toString());
+    });
 };
-
-export default { ipLookup, downloadData };
