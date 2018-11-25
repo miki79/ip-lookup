@@ -5,22 +5,17 @@
   "dependencies": {},
   "devDependencies": {
     "aws-sdk": "^2.361.0",
-    "aws-sdk-mock": "^1.7.0",
+    "aws-sdk-mock": "^4.2.0",
     "coveralls": "^3.0.2",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jest": "^21.27.2",
-    "jest": "^21.2.1",
+    "jest": "^23.6.0",
     "nock": "^9.6.1",
     "serverless": "^1.33.2",
     "sonar-scanner": "^3.1.0"
   },
   "scripts": {
     "deploy": "sls deploy -v",
-    "test": "npm run lint && jest",
+    "test": "jest",
     "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "lint": "eslint src",
     "sonar": "sonar-scanner -Dsonar.organization=$SONAR_ORGANIZATION -Dsonar.login=$SONAR_TOKEN"
   },
   "jest": {

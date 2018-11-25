@@ -1,6 +1,6 @@
 const { getData } = require('./dataApnic');
 
-const ip2long = (ip) => {
+const ip2long = ip => {
   let longValue = 0;
   const multipliers = [0x1000000, 0x10000, 0x100, 1];
   ip.split('.').forEach((part, i) => {
@@ -19,7 +19,7 @@ const cidrToRange = (start, mask) => {
 const getRange = (ip2, ipValue, listIp) => {
   let greaterMask = 0;
   let asn = 0;
-  Object.keys(listIp[ip2]).forEach((z) => {
+  Object.keys(listIp[ip2]).forEach(z => {
     if (greaterMask < z) {
       greaterMask = z;
       const range = cidrToRange(ip2, z);
@@ -31,7 +31,7 @@ const getRange = (ip2, ipValue, listIp) => {
   return asn;
 };
 
-const checkIp = async (ip) => {
+const checkIp = async ip => {
   const data = await getData();
   const ipValue = parseInt(ip2long(ip), 10);
   const response = {

@@ -1,12 +1,12 @@
 const AWS = require('aws-sdk');
-const httpClient = require('./httpClient');
+const { getContent } = require('./httpClient.js');
 
 const ASN_FILE = 'autnum.json';
 const IP_RANGE_FILE = 'ip-range.json';
 let dataAsn = null;
 let dataIpRange = null;
 
-const ip2long = (ip) => {
+const ip2long = ip => {
   let longValue = 0;
   const multipliers = [0x1000000, 0x10000, 0x100, 1];
   ip.split('.').forEach((part, i) => {
@@ -27,7 +27,7 @@ const saveFile = async (dataFile, filename) => {
   return true;
 };
 
-const getFile = async (filename) => {
+const getFile = async filename => {
   const s3 = new AWS.S3();
   const options = {
     Bucket: process.env.S3_BUCKET,
@@ -37,7 +37,7 @@ const getFile = async (filename) => {
   return fileData.Body.toString('utf-8');
 };
 
-const parseAsnResponse = async (response) => {
+const parseAsnResponse = async response => {
   const results = response.split(/\r?\n/);
   const listAsn = {};
   for (let i = 0; i < results.length; i += 1) {
@@ -54,11 +54,11 @@ const parseAsnResponse = async (response) => {
 };
 
 const saveAsn = async () => {
-  const response = await httpClient('http://thyme.apnic.net/current/data-used-autnums');
+  const response = await getContent('http://thyme.apnic.net/current/data-used-autnums');
   return parseAsnResponse(response);
 };
 
-const parseIpRangeResponse = async (response) => {
+const parseIpRangeResponse = async response => {
   const results = response.split(/\r?\n/);
   const listIp = {};
   for (let i = 0; i < results.length; i += 1) {
@@ -80,7 +80,7 @@ const parseIpRangeResponse = async (response) => {
 };
 
 const saveIpRange = async () => {
-  const response = await httpClient('http://thyme.apnic.net/current/data-raw-table');
+  const response = await getContent('http://thyme.apnic.net/current/data-raw-table');
   return parseIpRangeResponse(response);
 };
 
@@ -103,7 +103,7 @@ const getIpRange = async () => {
 };
 
 const downloadData = () =>
-  Promise.all([saveIpRange(), saveAsn()]).catch((e) => {
+  Promise.all([saveIpRange(), saveAsn()]).catch(e => {
     throw e;
   });
 

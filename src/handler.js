@@ -29,7 +29,7 @@ module.exports.download = (event, context, callback) => {
     .then(() => {
       callback(null, 'OK');
     })
-    .catch((e) => {
+    .catch(e => {
       console.error(e);
       callback(e.toString());
     });

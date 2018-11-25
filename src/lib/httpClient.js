@@ -3,7 +3,7 @@ const http = require('http');
 const getContent = url =>
   new Promise((resolve, reject) => {
     // return new pending promise
-    const request = http.get(url, (response) => {
+    const request = http.get(url, response => {
       // handle http errors
       if (response.statusCode < 200 || response.statusCode > 299) {
         reject(new Error(`Failed to load page, status code: ${response.statusCode}`));

@@ -1,8 +1,8 @@
-import { promisify } from 'util';
-import fs from 'fs';
-import awsMock from 'aws-sdk-mock';
-import path from 'path';
-import { ipLookup } from '../src/handler';
+const { promisify } = require('util');
+const fs = require('fs');
+const awsMock = require('aws-sdk-mock');
+const path = require('path');
+const { ipLookup } = require('../src/handler');
 
 awsMock.setSDK(path.resolve(`${__dirname}/../node_modules/aws-sdk`));
 
@@ -37,7 +37,7 @@ describe('IP lookup', () => {
       callback(new Error('error'), null);
     });
     const result = handler(event, context);
-    return result.then((data) => {
+    return result.then(data => {
       expect(data).toHaveProperty('body', '"Internal Error"');
     });
   });
@@ -45,7 +45,7 @@ describe('IP lookup', () => {
     event = { requestContext: { identity: { sourceIp: '999.0.0.1' } } };
     mockS3();
     const result = handler(event, context);
-    return result.then((data) => {
+    return result.then(data => {
       expect(data).toHaveProperty('body', '{"name":"N/A","country":"N/A","asn":0}');
     });
   });
@@ -53,7 +53,7 @@ describe('IP lookup', () => {
     event = { requestContext: { identity: { sourceIp: '1.0.4.1' } } };
     mockS3();
     const result = handler(event, context);
-    return result.then((data) => {
+    return result.then(data => {
       expect(data).toHaveProperty('body', '{"name":"AS24 - National Aeronautics and Space Administration","country":"US","asn":"56203"}');
     });
   });
@@ -61,9 +61,8 @@ describe('IP lookup', () => {
     event = { requestContext: { identity: { sourceIp: '1.0.128.1' } } };
     mockS3();
     const result = handler(event, context);
-    return result.then((data) => {
+    return result.then(data => {
       expect(data).toHaveProperty('body', '{"name":"N/A","country":"N/A","asn":"23969"}');
     });
   });
 });
-
