@@ -9,7 +9,7 @@
     "coveralls": "^3.0.3",
     "jest": "^23.6.0",
     "nock": "^9.6.1",
-    "serverless": "^1.33.2",
+    "serverless": "^1.43.0",
     "sonar-scanner": "^3.1.0"
   },
   "scripts": {
