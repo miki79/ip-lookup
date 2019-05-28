@@ -5,7 +5,7 @@
   "dependencies": {},
   "devDependencies": {
     "aws-sdk": "^2.361.0",
-    "aws-sdk-mock": "^4.2.0",
+    "aws-sdk-mock": "^4.4.0",
     "coveralls": "^3.0.3",
     "jest": "^23.6.0",
     "nock": "^9.6.1",
