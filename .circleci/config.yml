@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults  
   docker:
-    - image: loyaltyone/docker-alpine-java-node:jre-8-node-8   
+    - image: loyaltyone/docker-slim-java-node:latest   
 
 jobs:
   build:
