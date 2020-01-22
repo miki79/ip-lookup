@@ -7,7 +7,7 @@
     "aws-sdk": "^2.607.0",
     "aws-sdk-mock": "^5.0.0",
     "coveralls": "^3.0.9",
-    "jest": "^24.9.0",
+    "jest": "^25.1.0",
     "nock": "^11.7.2",
     "serverless": "^1.61.3",
     "sonar-scanner": "^3.1.0"
