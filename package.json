@@ -4,7 +4,7 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
-    "aws-sdk": "^2.659.0",
+    "aws-sdk": "^2.660.0",
     "aws-sdk-mock": "^5.1.0",
     "coveralls": "^3.0.11",
     "jest": "^25.4.0",
