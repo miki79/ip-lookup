@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults  
   docker:
-    - image: loyaltyone/docker-slim-java-node:latest   
+    - image: timbru31/java-node:8-alpine-jdk  
 
 jobs:
   build:
