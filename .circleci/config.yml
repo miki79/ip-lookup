@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults  
   docker:
-    - image: timbru31/java-node:8-alpine-jdk  
+    - image: timbru31/java-node:11-alpine-jdk
 
 jobs:
   build:
