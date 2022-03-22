@@ -9,7 +9,7 @@
     "coveralls": "^3.1.1",
     "jest": "^27.5.1",
     "kind-of": "^6.0.3",
-    "minimist": "^1.2.5",
+    "minimist": "^1.2.6",
     "nock": "^13.2.4",
     "serverless": "^3.7.1",
     "sonar-scanner": "^3.1.0"
