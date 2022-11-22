@@ -11,7 +11,7 @@
     "kind-of": "^6.0.3",
     "minimist": "^1.2.6",
     "nock": "^13.2.9",
-    "serverless": "^3.22.0",
+    "serverless": "^3.25.0",
     "sonar-scanner": "^3.1.0"
   },
   "scripts": {
